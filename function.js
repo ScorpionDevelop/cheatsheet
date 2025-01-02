@@ -1,3 +1,4 @@
+"use strict";
 //#########################################################################################
 // Console Mehthods
 //#########################################################################################
@@ -130,7 +131,7 @@ console.info("Information - info");
 // 19. trim
 // 20. trimStart
 // 21. trimEnd
-
+// 22. length
 //
 
 //
@@ -326,10 +327,13 @@ console.log("     Hello    ".trimStart()); // "Hello       " --> ohne Leerzeiche
 console.log("     Hello    ".trimEnd()); // "       Hello" --> ohne Leerzeichen am Ende
 //
 
+// .lenght
+// Gibt die Länge des Strings als Zahl zurück
+console.log(testWord.length());
 //
 
 //#########################################################################################
-// Console Mehthods
+// Array Mehthods
 //#########################################################################################
 
 //
@@ -375,7 +379,7 @@ let toStringArray = [1, 2, 3];
 console.log(toStringArray.toString()); // 1,2,3
 
 // 2. join
-// Retund arras string, Any separator can be specified, comma is default; No overwriting
+// Retund arrays string, Any separator can be specified, comma is default; No overwriting
 let joinArray = ["Hello", "World"];
 console.table(joinArray); // Array
 console.log(joinArray.join(" ")); // Hello,World
@@ -458,24 +462,158 @@ console.table(spliceArray);
 
 // 10. slice
 // Returns selected element in an array, as a new array, default start = 0, end = last Element; No overwriting
-let sliceNums= [11,22,33,44,55]
-  console.table(sliceNums)
-  let sliceArray = sliceNums.slice(2,4)
-  console.table(sliceNums)
-  console.table(sliceArray)
+// Ausgabe startet bei der ersten Zahl und endet 1 vor der zweiten Zahl z. B. bei slice(1,2) wird nur die Zahl an der Position 1
+// also die zweite Stelle im Array ausgegeben
+console.log("");
+console.log("");
 
+console.log("#################################################################################");
+console.log("10. slice");
+
+let sliceNums = [11, 22, 33, 44, 55];
+console.table(sliceNums);
+let sliceArray = sliceNums.slice(2, 4);
+console.table(sliceNums);
+console.table(sliceArray); // 33, 44
+sliceArray = sliceNums.slice(1, 2);
+console.table(sliceArray); // 33, 44
 
 // 11. reverse
+// Reverses the order of the elements in an array. Overwriting
+let reverseArrayInit = [1, 2, 3, 4, 5];
+console.table(reverseArrayInit);
+reverseArrayInit.reverse();
+console.table(reverseArrayInit);
 
 // 12. isArray
+// Returns true if an object us an array, otherwise false. No overwriting
+console.log(typeof reverseArrayInit); // object --> wenig aussagekräftig
+console.log(Array.isArray(reverseArrayInit)); // true --> zur weiteren Verarbeitung wesentlich besser geeignet
+let testStringIsArray = "Hallo Welt";
+console.log(Array.isArray(testStringIsArray)); // false, da es sich um einen String handelt
 
 // 13. indexOf
+// https://www.w3schools.com/jsref/jsref_indexof_array.asp
+// The indexOf() method returns the first index (position) of a specified value.
+// The indexOf() method returns -1 if the value is not found.
+//
+
+const indexOfFruits = ["Banana", "Orange", "Apple", "Mango"];
+let indexAppel = indexOfFruits.indexOf("Apple"); // 2
+console.log(indexAppel); // 2
+
+const indexOfFruits2 = ["Banana", "Orange", "Apple", "Mango", "Apple"];
+let indexAppel2 = indexOfFruits2.indexOf("Apple", 3); // 4
+console.log(indexAppel2); // 2
 
 // 14. lastIdexOf
+// https://www.w3schools.com/jsref/jsref_lastindexof_array.asp
+
+const lastIndexOffruits = [
+  "Apple",
+  "Orange",
+  "Apple",
+  "Mango",
+  "Apple",
+  "Mango",
+  "Apple",
+  "Orange",
+  "Apple",
+];
+let indexAppel3 = lastIndexOffruits.lastIndexOf("Apple");
+console.log(indexAppel3); // 8
+let indexAppel4 = lastIndexOffruits.lastIndexOf("Apple", -2);
+console.log(indexAppel4); // 6
+
+let indexAppel5 = lastIndexOffruits.lastIndexOf("Apple", 5);
+console.log(indexAppel5); // 4
 
 // 15. find
+// https://www.w3schools.com/jsref/jsref_find.asp
+// The find() method returns the value of the first element that passes a test.
+// The find() method executes a function for each array element.
+// The find() method returns undefined if no elements are found.
+// The find() method does not execute the function for empty elements.
+// The find() method does not change the original array.
+
+console.log("");
+console.log("");
+
+console.log("#################################################################################");
+
+const ages = [3, 10, 18, 20];
+
+function checkAge(age) {
+  return age > 18;
+}
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = ages.find(checkAge); // geht so nicht, da das HTML ELement mit der ID "demo" nicht existiert
+}
+
+const fruechte = [
+  "Apple",
+  "Orange",
+  "Apple",
+  "Mango",
+  "Apple",
+  "Mango",
+  "Apple",
+  "Orange",
+  "Apple",
+];
+//debugger;
+
+function myFunction() {
+  // Erstellen einer Funktion, die die Find-Funktion aufruft und einen Console.log Befehl ausführt, wenn Find einen Treffer hat
+  console.log("egalwiedasheißt: " + fruechte.find(checkfrucht));
+  console.log("egalwiedasheißt: " + fruechte.find(checkfrucht2));
+}
+// console.log = Ausgabebefehl;
+// fruechte = Array in dem gesucht werden soll;
+// .find Methode die ausgeführt werden soll;
+// checkfrucht = Funktion der Find Mehtode
+
+function checkfrucht(egalWieDasHeist) {
+  // Funktion für die Find-Methode, die jedes Element im Array durchgeht, bis ein Treffer gelandet wird oder bis zum Ende und gibt dann undefinded zurück
+  return egalWieDasHeist == "Mango"; // hier kommt "Mango" als Rückgabewert
+}
+function checkfrucht2(egalWieDasHeist2) {
+  // Funktion für die Find-Methode, die jedes Element im Array durchgeht, bis ein Treffer gelandet wird oder bis zum Ende und gibt dann undefinded zurück
+  return egalWieDasHeist2 == "mango"; // hier kommt "undefined" als Rückgabewert
+}
+
+myFunction();
 
 // 16. findIndex
+// The findIndex() method executes a function for each array element.
+// The findIndex() method returns the index (position) of the first element that passes a test.
+// The findIndex() method returns -1 if no match is found.
+// The findIndex() method does not execute the function for empty array elements.
+// The findIndex() method does not change the original array.
+
+const fruechteFindIndex = [
+  "Apple",
+  "Orange",
+  "Apple",
+  "Mango",
+  "Apple",
+  "Mango",
+  "Apple",
+  "Orange",
+  "Apple",
+];
+
+myFunctionFindIndex();
+
+function myFunctionFindIndex() {
+  console.log("findIndex");
+  console.log(fruechteFindIndex.findIndex(checkfruchtFindIndex));
+}
+
+function checkfruchtFindIndex(kannheisenwieeswill) {
+  return kannheisenwieeswill == "Mango";
+}
 
 // 17. includes
 
