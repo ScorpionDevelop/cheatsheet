@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <!-- 
+    Die Reihenfolge im <head> ist sinnvollerweise foldende: 
+      1. meta
+      2. link
+      3. script
+      4. title 
+      -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Verknüpfung der CSS-Datei in die HTML -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Verknüpfung der Javascript-Datei in die HTML Seite. -->
+    <!-- Das können auch mehrere sein z. B. auch extern oder Links für z. B. Firebase etc -->
+    <script src="function.js" defer></script>
+
+    <title>Titel</title>
+  </head>
+  <body>
+    <h1>Übersicht der HTML, CSS und JS Funktionen!</h1>
+    <p>
+      Auf dieser Seite sollen verschiedene Techniken zur Anwendung kommen, die nicht unbedingt
+      miteinander zu tun haben müssen.
+    </p>
+    <p>
+      Web Breakpoints Handy 480px - Portrait <br />Handy 768px - Landscape <br />
+      Tablet 834px - Portrait <br />Tablet 1024px - Landscape <br />Laptop 1440px <br />Dekstop
+      1440px
+    </p>
+
+    <code>
+      <span>
+        // 9. splice // Adds and/or removes array elements. Returns removed items in array (if any)
+        <br />// Overwriting console.log("Orginal"); <br />let spliceArray = ["a", "b", "c", "d"];
+        <br />console.table(spliceArray); console.log("Änderung 1: hier wird b + c gelöscht und X
+        eingefügt "); <br />console.table(spliceArray.splice(1, 2, "X")); // hier wird b + c
+        gelöscht und X eingefügt <br />console.table(spliceArray);</span
+      >
+    </code>
+  </body>
+</html>
